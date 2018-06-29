@@ -47,3 +47,4 @@ while True:
         print('Generate return value:', e.value)
         break
 
+# oo
