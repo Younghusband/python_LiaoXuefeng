@@ -4,13 +4,16 @@
 
 count = 0
 
-def move(_n, _a, _b, _c):
-    if _n == 1:
-        print(_a, "-->", _c)
+
+def move(n, A, B, C):
+    global count
+    if n == 1:
+        count += 1
+        print(A, "-->", C)
     else:
-        move(_n - 1, _a, _c, _b)
-        move(1, _a, _b, _c)
-        move(_n - 1, _b, _a, _c)
+        move(n - 1, A, C, B)
+        move(1, A, B, C)
+        move(n - 1, B, A, C)
 
 
 def move1(n, A, B, C):
@@ -22,7 +25,8 @@ def move1(n, A, B, C):
         move(1, B, A, C)
 
 
-move(4, 'A', 'B', 'C')
-# move1(4, 'A', 'B', 'C')
+move(3, 'A', 'B', 'C')
 print("------------")
+print(count, '次移动')
+# move1(4, 'A', 'B', 'C')
 # move(3, 'A', 'B', 'C')
