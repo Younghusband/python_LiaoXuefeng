@@ -1,19 +1,36 @@
-# 普通递归
-def calc(_n):
-    if _n == 1:
-        return 1
-    return _n * calc(_n - 1)
+def fib(max):
+    n, a, b = 0, 0, 1
+    while n < max:
+        yield b
+        a, b = b, a + b
+        n = n + 1
+    return 'done'
 
 
-print(calc(5))
+# g = fib(6)
+#
+# while True:
+#     try:
+#         x = next(g)
+#         print('g:', x)
+#     except StopIteration as e:
+#         print('Generator return value:', e.value)
+#         break
 
 
-# 尾递归
+from collections import Iterator
+from collections import Iterable
 
-def _calc(_temp, _product):
-    if _temp == 1:
-        return _product
-    return _calc(_temp - 1, _product * _temp)
+print(isinstance(range(1, 10), Iterable))
 
 
-print(_calc(5, 1))
+def f(x):
+    return str.lower(x)
+
+
+r = map(f, ['A', 'B', 'C', 'D'])
+
+for x in r:
+    print(x,end = '\t')
+
+

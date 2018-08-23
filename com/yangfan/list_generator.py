@@ -1,3 +1,5 @@
+import os
+
 O = []
 
 for x in range(1, 11):
@@ -24,7 +26,6 @@ L = [x + y for x in 'ABC' for y in 'XYZ']
 
 print('-------------------------\n', L)
 
-import os
 
 [d for d in os.listdir('.')]  # os.listdir可以列出文件和目录  虽然我不知道怎么打印。。
 
