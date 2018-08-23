@@ -76,8 +76,6 @@ DIGITS = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8
 def str2int(s):
     def char2num(x, y):
         return 10 * x + y
-        pass
-
     def str2char(i):
         return DIGITS[i]
 
