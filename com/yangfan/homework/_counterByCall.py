@@ -1,12 +1,14 @@
 # 利用闭包返回一个计数器函数，每次调用它返回递增整数：
 
 def createCounter():
-    a = [0]         # 好奇a的生命周期什么时候结束
-    # a = 0  # 配合下面的nonlocal a
+    # a = [0]         # 好奇a的生命周期什么时候结束
+    a = 0  # 配合下面的nonlocal a
     def counter():
-        # nonlocal a
-        a[0] += 1
-        return a[0]
+        nonlocal a
+        a = a+1
+        return a
+        # a[0] += 1
+        # return a[0]
     return counter
 
 f = createCounter()
