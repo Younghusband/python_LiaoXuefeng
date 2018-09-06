@@ -31,6 +31,6 @@ def f(x):
 r = map(f, ['A', 'B', 'C', 'D'])
 
 for x in r:
-    print(x,end = '\t')
+    print(x, end = '\t')
 
 
