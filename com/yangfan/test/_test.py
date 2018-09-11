@@ -1,11 +1,23 @@
-def f(x):
-    return x*x
+import time
 
-print(f)
+def timer(text):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            print('%s 开始执行... ' % text)
+            start = time.time()
+            res = func(*args, **kwargs)
+            end = time.time()
+            print('%s 耗时 %s s' % (text,(end - start)))
+            return res
+        return wrapper
+    return decorator
 
-f = lambda x: x*x
+# @timer('无敌YF')
+def process():
+    time.sleep(2)
+    return 'OMG'
 
-print(f)
+timer = timer('无敌YF')
+process = timer(process)
 
-print(f.__name__)
-
+print(process())

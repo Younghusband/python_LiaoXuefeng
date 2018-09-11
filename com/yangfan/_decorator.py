@@ -21,20 +21,26 @@ now()
 
 import time
 
-def timer(func):  # 5
-    def deco(*args,**kwargs):
-        print('%s is running!' % func.__name__)
-        start = time.time()
-        func(*args,**kwargs)
-        stop = time.time()
-        print('%s over!' % func.__name__)
-        print('cost: %s s' % (stop - start))
-    return deco    # 这个相当于是被包装了一层的原函数
+def timer(para):
+    def outer(func):  # 这步
+        def deco(*args, **kwargs):
+            print('%s is fucking %s!' % (func.__name__ ,para))
+            start = time.time()
+            res = func(*args, **kwargs)
+            stop = time.time()
+            print('%s over %s!' % (func.__name__ ,para))
+            print('cost: %s s' % (stop - start))
+            return res
+        return deco  # 这个相当于是被包装了一层的原函数
+    return outer
 
-@timer
-def test(para):
+
+@timer('Lan')
+def test(*aaa):    # 这个地方如果写非可变参数的话，调用的时候也需要传入参数
     time.sleep(2)  # 表示目标函数实际处理流程
+    return 'Yangfan'   # 执行到最后才会打印
 
 
 # test = timer(test) #6  传入原函数
-test() #7   调用包装好的函数
+print(test())  #7   调用包装好的函数
+
