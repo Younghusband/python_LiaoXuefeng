@@ -20,10 +20,12 @@ def now():
 now()
 
 import time
+import functools
 
 def timer(para):
-    def outer(func):  # 这步
-        def deco(*args, **kwargs):
+    def decorator(func):  # 这步
+        @functools.wraps(func)      # 将func的相应属性赋值给wrapper
+        def wrapper(*args, **kwargs):
             print('%s is fucking %s!' % (func.__name__ ,para))
             start = time.time()
             res = func(*args, **kwargs)
@@ -31,8 +33,8 @@ def timer(para):
             print('%s over %s!' % (func.__name__ ,para))
             print('cost: %s s' % (stop - start))
             return res
-        return deco  # 这个相当于是被包装了一层的原函数
-    return outer
+        return wrapper  # 这个相当于是被包装了一层的原函数
+    return decorator
 
 
 @timer('Lan')
@@ -43,4 +45,10 @@ def test(*aaa):    # 这个地方如果写非可变参数的话，调用的时�
 
 # test = timer(test) #6  传入原函数
 print(test())  #7   调用包装好的函数
+
+print('-----------')
+print(test.__name__)    # 在functools的wraps操作之前会打印wrapper
+
+
+
 
