@@ -21,3 +21,5 @@ timer = timer('无敌YF')
 process = timer(process)
 
 print(process())
+
+print(process.__name__)
