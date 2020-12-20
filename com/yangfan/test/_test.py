@@ -23,3 +23,15 @@ process = timer(process)
 print(process())
 
 print(process.__name__)
+
+# X = []
+X = ''
+
+if X:
+    print("True")
+else:
+    print("False")
+
+X = input("快你妈输入: ")
+print("\n你妈输入了", X)
+

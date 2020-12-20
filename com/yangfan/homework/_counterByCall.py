@@ -3,6 +3,7 @@
 def createCounter():
     # a = [0]         # 好奇a的生命周期什么时候结束
     a = 0  # 配合下面的nonlocal a
+
     def counter():
         nonlocal a
         a = a+1
@@ -16,7 +17,7 @@ f = createCounter()
 print(f())
 print(f())
 print(f())
-print(f(),end = '\n---- 以下是利用yield获得计数器 ----\n')
+print(f(), end='\n---- 以下是利用yield获得计数器 ----\n')
 
 
 # ---------------- 利用yield来实现counter --------------
